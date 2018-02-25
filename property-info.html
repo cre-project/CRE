@@ -24,7 +24,7 @@
 		<header id="sub-header">
 			<nav>
 				<ul>
-					<li><a href="#">PROPERTY INFO</a></li>
+					<li><a id="selected" href="#">PROPERTY INFO</a></li>
 					<li><a href="#">UNIT MIX</a></li>
 					<li><a href="#">OPERATING STATEMENT</a></li>
 					<li><a href="#">SALES COMPARABLES</a></li>
@@ -49,17 +49,19 @@
                     <div>State</div>
                     <input>
                 </label>
-                <label>
-                    <div class="half-size">Number of Stories</div>
-                    <input>
-                </label>
-                <label>
-                    <div class="half-size">Year built</div>
-                    <input>
-                </label>
-                <label>
+                <div class="box">
+                    <label class="half-size">
+                        <div class="half-size">Number of Stories</div>
+                        <input class="half-size">
+                    </label>
+                    <label class="half-size">
+                        <div class="half-size">Year built</div>
+                        <input class="half-size">
+                    </label>
+                </div>
+                <label class="half-size">
                     <div class="half-size">Lot Size</div>
-                    <input>
+                    <input class="half-size">
                 </label>
             </form>
             <!-- part 2 of the form -->
@@ -72,9 +74,8 @@
                     <div>ZIP</div>
                     <input>
                 </label>
+                <button>Save & Next</button>
             </form>
-            <div></div>
-            <button>Save & Next</button>
         </div>
 	</body>
 </html>

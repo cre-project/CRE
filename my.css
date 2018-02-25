@@ -94,6 +94,10 @@ nav ul li a {
     text-decoration: none;
 }
 
+#selected {
+    border-bottom: 2px solid #FF6600;
+}
+
 #sub-header {
     background-color: #F2F2F2;
 }
@@ -134,7 +138,6 @@ nav ul li a {
     grid-template-rows: 1fr 3fr 1fr;
   }
 
-
 h1 {
     width: 50%;
     margin: auto;
@@ -164,6 +167,8 @@ form {
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
+    margin-top: 4.5em;
+    margin-left: 4em;
 }
 
 label {
@@ -175,7 +180,7 @@ label {
 
 label div {
   display: block;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 label:hover div {
@@ -188,11 +193,11 @@ label:hover {
 }
 
 input {
+  width: 20em;
   border: none;
   outline: none;
-  font-size: 1.3em;
-  padding: 0em 1.5em;
-  margin-left: 0%;
+  font-size: 1em;
+  padding: 0.2em 0;
   border-bottom: 2px solid gray;
 }
 
@@ -201,17 +206,29 @@ label:hover input {
   border-bottom: 2px solid #2CC0BE;
 }
 
+.box {
+  display: flex;
+  flex: wrap;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.half-size {
+  width: 9em;
+  margin-right: 5em;
+}
+
 button {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 3;
-    grid-row-end: 4;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  max-height: 2.5em;
   display: block;
-  margin: 3em auto 3em;
+  margin: 11em auto 3em;
   border-radius: 100px;
   color: white;
-  font-size: 1.2em;
-  padding: 0.5em 7em;
+  font-size: 1.1em;
+  padding: 0.5em 6em;
   background-color: #FF6600;
-
 }
