@@ -1,0 +1,100 @@
+body {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    font-family: "Open Sans", sans-serif;
+    color: gray;
+}
+
+#hero-img {
+    min-height: 100vh;
+    background-image: url(https://cdn.glitch.com/34421403-ae74-405f-a72f-bca10d865337%2Foriginal.PNG?1519086761826);
+    background-size: cover;
+}
+
+#logo {
+  display: block;
+  margin: 11em auto 4em;
+}
+
+form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  width: 40em;
+  color: gray;
+  margin: 2em 0;
+}
+
+label div {
+  display: block;
+  font-size: 1em;
+}
+
+label:hover div {
+  color: #2CC0BE;
+  display: block;
+}
+
+label:hover {
+  color: gray;
+}
+
+input {
+  border: none;
+  outline: none;
+  font-size: 1.3em;
+  padding: 0em 1.5em;
+  margin-left: 0%;
+  border-bottom: 2px solid gray;
+}
+
+label:hover input {
+  color:gray;
+  border-bottom: 2px solid #2CC0BE;
+}
+
+button {
+  display: block;
+  margin: 4em auto 4em;
+  border-radius: 100px;
+  color: white;
+  font-size: 1.2em;
+  padding: 0.5em 7em;
+  background-color: #FF6600;
+
+}
+
+a {
+  color: #2CC0BE;
+  border-bottom: 1px solid #2CC0BE;
+}
+
+/* Make placeholder text transparent on focus */
+input:focus::-webkit-input-placeholder { 
+  color:transparent; 
+}
+input:focus:-moz-placeholder { /* Firefox 18- */ 
+  color:transparent; 
+}
+
+input:focus::-moz-placeholder {  /* Firefox 19+ */
+  color:transparent; 
+}
+input:focus:-ms-input-placeholder {  
+  color:transparent;
+} 
+
+#helper {
+  display: block;
+  width: 50%;
+  margin: 4em auto;
+}
+
+#bottom {
+  display: block;
+  width: 50%;
+  margin: 10em auto 1em;
+}
