@@ -131,7 +131,7 @@ nav ul li a {
     margin-right: 0;
 }
 
-/* Content */
+/* Grid Content */
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 2fr;
@@ -147,6 +147,49 @@ h1 {
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
+}
+
+/* Tables */
+table {
+    margin: 0 auto;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+tr {
+    height: 3em;
+    border-top: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+}
+
+td input, tr input {
+  font-size: 0.9em;
+  width: 3em;
+  align-content: center;
+}
+
+th, td {
+    height: 3em;
+    min-width: 18em;
+    padding: 1em;
+    text-align: center;
+}
+
+td button {
+  max-height: 2.5em;
+  border-radius: 100px;
+  color: white;
+  font-size: 0.9em;
+  padding: 0.5em 1em;
+  margin: 0em;
+  background-color: #FF6600;
+}
+
+.narrow {
+    min-width: 3em;
+    width: 3em;
 }
 
 /* Forms */
