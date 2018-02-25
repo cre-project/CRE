@@ -64,28 +64,37 @@ header div {
 
 #menu {
     float: right;
-    margin-right: 4em;
-    margin-top: 1em;
 }
 
 #label {
+    margin: auto 3em;
     border: 1px solid white;
     border-radius: 4px;
     font-weight: bold;
     padding: 0.3em;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 #symbol {
-    font-size: 200%;
+    margin-top: 0.7em;
+    margin-right: 1em;
+    margin-left: 0.2em;
+    font-size: 150%;
+}
+
+.header-image {
+    display: inline-block;
+    height: 4em;
+    width: 4em;
 }
 
 #logo-small {
-    display: inline-block;
-    size: 40%;
-    height: 4em;
-    width: 4em;
     margin-left: 0;
+}
+
+#search {
+    float: right;
+    margin-right: 0;
 }
 
 #sub-header {
@@ -113,4 +122,15 @@ nav ul li:hover {
 a {
     color: #5D5D5D;
     text-decoration: none;
+}
+
+button {
+  display: block;
+  margin: 4em auto 4em;
+  border-radius: 100px;
+  color: white;
+  font-size: 1.2em;
+  padding: 0.5em 7em;
+  background-color: #FF6600;
+
 }
