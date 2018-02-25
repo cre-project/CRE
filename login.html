@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>CRE</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="my.css" />
+    <style>
+      body {
+          display: grid;
+          grid-template-columns: 60% 40%;
+      }
+
+      #hero-img {
+          min-height: 100vh;
+          background-image: url(https://cdn.glitch.com/34421403-ae74-405f-a72f-bca10d865337%2Foriginal.PNG?1519086761826);
+          background-size: cover;
+      }
+
+     #logo {
+        display: block;
+        margin: 8em auto 3em;
+    }
+
+    form {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    label {
+        display: block;
+        width: 30em;
+        color: gray;
+        margin: 2em 0;
+    }
+
+    label div {
+        display: none;
+        font-size: 1em;
+    }
+
+    label:hover div {
+        display: block;
+    }
+
+    label:hover {
+        color: green;
+    }
+
+    input {
+        border: none;
+        outline: none;
+        font-size: 1.3em;
+        border-bottom: 2px solid gray;
+    }
+
+    label:hover input {
+        border-bottom-color: green;
+    }
+
+    button {
+        display: block;
+        margin: 4em auto 4em;
+        border-radius: 100px;
+        color: white;
+        font-size: 1.3em;
+        padding: 0.5em 2em;
+        background-color: #FF6600;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="hero-img"></div>
+    <div id="wrapper">
+        <img id="logo" src="logo.png" alt="Your logo here" width="200" />
+        <form>
+            <label>
+                <div>Username</div>
+                <input placeholder="Username">
+            </label>
+            <label>
+                <div>Password</div>
+                <input placeholder="Password" type="password">
+            </label>
+            <button>
+                Log in
+            </button>
+            <label>
+                <input type="checkbox">
+                Keep me logged in    
+            </label>
+
+        </form>
+    </div>
+    <!--    
+    <div class="image left" style="top:0; max-width:50%; min-height: 100%">
+            <img src="https://cdn.glitch.com/34421403-ae74-405f-a72f-bca10d865337%2Foriginal.PNG?1519086761826" alt="people talking" />
+        </div>
+        <div class="right">
+            <div class="right align-center" style="padding-top: 10%">
+            <h2>Name/ Logo</h2>
+            </div>
+            <div class="align-center">
+                <form action="#" method="post">
+                <div class="field half" style="width:24%; margin-right:10%">
+                                <input name="username" id="name" type="text" placeholder="Username">
+                </div>
+                <div class="field half" style="width:24%; margin-right:10%">
+                    <input name="password" id="password" type="text" placeholder="Password">
+                </div>
+                <div>
+                    <input type="checkbox" id="keepLoggedIn" name="keepLoggedIn" value="keepLoggedIn">
+                    <label for="keepLoggedIn">Keep me logged in</label>
+                </div>
+                <div>
+                    <button type="submit" style="box-shadow:#FFFFFF;color:#FFFFFF;background-color: #FF6600;">Log in</button>
+                </div>
+                </form>
+            
+
+                <div class="copyright align-center"  style="margin-top: 5%; margin-left: 50%;"><a href="#">Forgot username or password?</a></div>
+
+                <div class="copyright align-center"  style="margin-top: 5%; margin-left: 50%;">Need an account? <a href="#">Create an account</a></div>
+            </div>
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    -->
+</body>
+</html>
