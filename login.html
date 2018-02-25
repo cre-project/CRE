@@ -35,11 +35,13 @@
     }
 
     label div {
-        display: none;
+        display: block;
+        color: white;
         font-size: 1em;
     }
 
     label:hover div {
+        color: green;
         display: block;
     }
 
@@ -66,7 +68,23 @@
         font-size: 1.3em;
         padding: 0.5em 2em;
         background-color: #FF6600;
+    
     }
+    
+    /* Make placeholder text transparent on focus */
+    input:focus::-webkit-input-placeholder { 
+        color:transparent; 
+    }
+    input:focus:-moz-placeholder { /* Firefox 18- */ 
+        color:transparent; 
+    }
+
+    input:focus::-moz-placeholder {  /* Firefox 19+ */
+        color:transparent; 
+    }
+    input:focus:-ms-input-placeholder {  
+        color:transparent;
+    } 
 
     </style>
 </head>
