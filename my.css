@@ -72,11 +72,20 @@ header div {
     border: 1px solid white;
     border-radius: 4px;
     font-weight: bold;
-    padding: 0.2em;
+    padding: 0.3em;
+    font-size: 0.9em;
 }
 
 #symbol {
     font-size: 200%;
+}
+
+#logo-small {
+    display: inline-block;
+    size: 40%;
+    height: 4em;
+    width: 4em;
+    margin-left: 0;
 }
 
 #sub-header {
@@ -91,8 +100,14 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-    margin-left: 2em;
-    margin-right: 2em; 
+    margin-left: 3em;
+    margin-right: 3em; 
+    padding-bottom: 0.5em;
+    font-size: 0.9em;
+}
+
+nav ul li:hover {
+    border-bottom: 2px solid #FF6600;
 }
 
 a {
