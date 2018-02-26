@@ -1,8 +1,9 @@
 body {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 65% 35%;
     font-family: "Open Sans", sans-serif;
     color: gray;
+    width: 100vw;
 }
 
 #hero-img {
@@ -17,8 +18,8 @@ body {
 }
 
 form {
-  width: 50%;
-  margin: 0 auto;
+  width: 75%;
+  margin: 3em auto;
 }
 
 label {

@@ -267,7 +267,7 @@ button {
   grid-row-start: 2;
   grid-row-end: 3;
   max-height: 2.5em;
-  display: block;
+  display: inline-block;
   margin: 11em auto 3em;
   border-radius: 100px;
   color: white;
