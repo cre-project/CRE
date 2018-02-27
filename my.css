@@ -83,10 +83,11 @@ nav ul li {
     margin-right: 3em; 
     padding-bottom: 0.5em;
     font-size: 0.9em;
+    border-bottom: 2px solid transparent;
 }
 
 nav ul li:hover {
-    border-bottom: 2px solid #FF6600;
+    border-bottom-color: #FF6600;
 }
 
 nav ul li a {
@@ -95,7 +96,7 @@ nav ul li a {
 }
 
 #selected {
-    border-bottom: 2px solid #FF6600;
+   border-bottom-color: #FF6600;
 }
 
 #sub-header {
