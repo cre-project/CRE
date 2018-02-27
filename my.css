@@ -261,11 +261,23 @@ label:hover input {
   margin-right: 5em;
 }
 
+.add-more {
+    margin: 1em auto;
+    width: 95%;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    padding: 1.5em 30em;
+    border: 1px dashed darkgray;
+    border-radius: 30px;
+}
+
 button {
   grid-column-start: 3;
   grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
   max-height: 2.5em;
   display: inline-block;
   margin: 11em auto 3em;
