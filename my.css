@@ -174,7 +174,7 @@ td input, tr input {
 
 th, td {
     height: 3em;
-    min-width: 18em;
+    min-width: 15em;
     padding: 1em;
     text-align: center;
 }
@@ -267,7 +267,7 @@ label:hover input {
     margin: auto;
     margin-left: 0;
     max-height: 4.3em;
-    width: 95%;
+    width: 80%;
     grid-column-start: 2;
     grid-column-end: 5;
     grid-row-start: 4;
