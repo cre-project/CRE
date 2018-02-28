@@ -47,6 +47,11 @@ body {
     box-sizing: border-box;
 }
 
+/* Make clickable elements have a pointer cursor */
+button, .header-image {
+    cursor: pointer;
+}
+
 /* General  */
 body {
     font-family: "Open Sans", sans-serif;
@@ -365,6 +370,7 @@ button {
   align-content: center;
   display: inline-block;
   margin: auto;
+  box-shadow: 0 1.5px 7px 0 rgba(0,0,0,0.25);
 }
 
 #large-sub-header {
@@ -383,15 +389,22 @@ button {
 
 .preview-title {
   margin: 1em;
+  margin-bottom: 0.5em;
   font-weight: bold;
   font-size: 1.1em;
+  color: #4C4C4C;
 }
 
 .preview-content {
   margin: 1.5em;
-  font-size: 1em;
+  margin-top: 0;
+  font-size: 0.95em;
 }
 
 #price {
     font-size: 1.7em;
+}
+
+br {
+    line-height: 1.3em;
 }
