@@ -294,6 +294,7 @@ button {
   background-color: #FF6600;
 }
 
+
 /* Button sub-types */
 .save {
   grid-column-start: 3;
@@ -304,6 +305,18 @@ button {
   vertical-align: middle;
   margin: auto 0;
   padding: 0.5em 2em;
+}
+
+.status {
+  vertical-align: middle;
+  margin-right: 6em;
+  font-size: 0.9em;
+  padding: 0.4em 0.9em;
+  width: 100px;
+}
+
+#completed {
+  background-color: #18D33F;
 }
 
 #property-info {
@@ -324,6 +337,9 @@ button {
 #header {
     vertical-align: middle;
     padding: 0.5em 2em;
+    margin-right: 2em;
+    margin-top: 2.1em;
+    float: right;
 } 
 
 .auto-margin {
@@ -343,6 +359,7 @@ button {
 .preview-box {
   width: 90%;
   height: 14em; 
+  padding: 0.5em;
   background-color: #F2F2F2;
   align-content: center;
   display: inline-block;
@@ -363,3 +380,17 @@ button {
     color: #5D5D5D;
 }
 
+.preview-title {
+  margin: 1em;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.preview-content {
+  margin: 1.5em;
+  font-size: 1em;
+}
+
+#price {
+    font-size: 1.7em;
+}
