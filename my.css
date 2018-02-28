@@ -320,3 +320,7 @@ button {
     border-radius: 25%;
     float: left;
 }
+
+.auto-margin {
+  margin: auto;
+}
