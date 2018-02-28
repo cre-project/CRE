@@ -309,10 +309,10 @@ button {
 
 .status {
   vertical-align: middle;
-  margin-right: 6em;
+  margin-right: 4em;
   font-size: 0.9em;
-  padding: 0.4em 0.9em;
-  width: 100px;
+  padding: 0.1em 1em;
+  width: 120px;
 }
 
 #completed {
