@@ -321,6 +321,45 @@ button {
     float: left;
 }
 
+#header {
+    vertical-align: middle;
+    padding: 0.5em 2em;
+} 
+
 .auto-margin {
   margin: auto;
 }
+
+/* home page layout */
+.home {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 3em;
+    grid-column-gap: 2em;
+    margin: 5em 8em 1em;
+  }
+
+.preview-box {
+  width: 90%;
+  height: 14em; 
+  background-color: #F2F2F2;
+  align-content: center;
+  display: inline-block;
+  margin: auto;
+}
+
+#large-sub-header {
+  background-color: #F2F2F2;
+  height: 8em;
+}
+
+#index {
+    height: 100%;
+    padding: 2.1em 3.5em;
+    vertical-align: middle;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #5D5D5D;
+}
+
