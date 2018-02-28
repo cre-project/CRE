@@ -153,9 +153,10 @@ h1 {
 
 /* Tables */
 table {
-    margin: 0 auto;
+    margin: 0;
+    width: 85%;
     grid-column-start: 2;
-    grid-column-end: 4;
+    grid-column-end: 5;
     grid-row-start: 2;
     grid-row-end: 3;
 }
@@ -267,7 +268,7 @@ label:hover input {
     margin: auto;
     margin-left: 0;
     max-height: 4.3em;
-    width: 80%;
+    width: 85%;
     grid-column-start: 2;
     grid-column-end: 5;
     grid-row-start: 4;
