@@ -17,7 +17,7 @@
                 Marvin
 				<div id="symbol">&#8964;</div>
                 <div class="header-image" id="search">
-                    <img class="header-image"  src="search-icon.png" alt="Seach" />
+                    <img class="header-image"  src="search-icon.png" alt="Search" />
                 </div>
 			</div> 
 		</header>
@@ -32,9 +32,104 @@
 					<li><a href="preview.html">PREVIEW</a></li>
 				</ul>
 			</nav>
-        </header>
-        <div class="wrapper">
-            <h1>Operating Statement</h1>
-        </div>
+		</header>
+		<div class="two-columns">
+			<h1 id="tc-header">Operating Statement</h1>
+			<main>
+				<table id="os">
+					<thead>
+						<tr>
+							<th>Income</th>
+							<th>Current</th>
+							<th>Pro Forma</th>
+						</tr>
+					</thead>
+					<tr class="total">
+						<td>GROSS POTENTIAL RENT</td>
+						<td>$200,000</td>
+						<td>$200,000</td>
+					</tr>
+					<tr>
+						<td id="clickable">Less: Vacancy/Deduction</td>
+						<td id="money">(5.000.00)</td>
+						<td>(5.000.00)</td>
+					</tr>
+					<tr class="total">
+						<td>EFFECTIVE RENTAL INCOME</td>
+						<td>$200,000</td>
+						<td>$200,000</td>
+					</tr>
+					<tr>
+						<td span="3">Expenses</td>
+					</tr>
+					<tr>
+						<td>Real Estate Taxes</td>
+						<td id="money">(5.000.00)</td>
+						<td>(5.000.00)</td>
+					</tr>
+					<tr>
+						<td>Insurance</td>
+						<td>300</td>
+						<td>300</td>
+					</tr>
+					<tr>
+						<td>Utilities - Electric</td>
+						<td>430.00</td>
+						<td>430.00</td>
+					</tr>
+					<tr>
+						<td>Utilities - Water & Sewer</td>
+						<td>320.00</td>
+						<td>320.00</td>
+					</tr>
+					<tr>
+						<td>Garbage</td>
+						<td>934.34</td>
+						<td>934.34</td>
+					</tr>
+					<tr>
+						<td>Repairs & Maintenance</td>
+						<td>4.00</td>
+						<td>4.00</td>
+					</tr>
+					<tr>
+						<td>Management Fee</td>
+						<td>329.00</td>
+						<td>329.00</td>
+					</tr>
+					<tr>
+						<td>Landscaping</td>
+						<td>239.00</td>
+						<td>239.00</td>
+					</tr>
+					<tr>
+						<td>Other Expenses</td>
+						<td>400.00</td>
+						<td>400.00</td>
+					</tr>
+					<tr class="total">
+						<td>TOTAL EXPENSES</td>
+						<td>$200,000</td>
+						<td>$200,000</td>
+					</tr>
+					<tr>
+						<td>Net Operating Income</td>
+						<td>$45,498.00</td>
+						<td>$45,498.00</td>
+				</table>
+			</main>
+			<aside style="background-color: #2C3946;">
+
+			</aside>
+		</div>
+		<script>
+			const button = document.querySelector("#clickable")
+			const money = document.querySelector("#money")
+
+			button.addEventListener("click", function() {
+				money.textContent = (parseFloat(money.textContent) * 1.05).toFixed(2)
+			})
+
+		</script>
 	</body>
 </html>
