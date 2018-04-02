@@ -396,6 +396,12 @@ button {
   background-color: #18D33F;
 }
 
+#operating-statement {
+    margin-left: 35em;
+    margin-top: 1em;
+    width: 15em;
+}
+
 #property-info {
   grid-row-start: 3;
   grid-row-end: 4;
