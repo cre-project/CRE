@@ -46,14 +46,14 @@
 					</thead>
 					<tr class="total">
 						<td class="l-align bold" colspan="2">GROSS POTENTIAL RENT</td>
-						<td>$200,000</td>
-						<td>$200,000</td>
+						<td>$<span id="gpr-current">200000</span></td>
+						<td>$<span id="gpr-future">200000</span></td>
 					</tr>
 					<tr>
 						<td>Less: Vacancy/Deduction</td>
 						<td class="setting"><button class="percent" id="vacancy-plus">+</button><span id="vacancy">  5</span>% <button class="percent" id="vacancy-minus">-</button></td>
-						<td id="vacancy-current">5.000.00</td>
-						<td id="vacancy-future">5.000.00</td>
+						<td id="vacancy-current">5000.00</td>
+						<td id="vacancy-future">5000.00</td>
 					</tr>
 					<tr class="total">
 						<td class="l-align bold" colspan="2">EFFECTIVE RENTAL INCOME</td>
@@ -66,8 +66,8 @@
 					<tr>
 						<td class="l-align">Real Estate Taxes</td>
 						<td class="setting"><button class="percent" id="taxes-plus">+</button><span id="taxes">  5</span>% <button class="percent" id="taxes-minus">-</button></td>
-						<td id="taxes-current">5.000.00</td>
-						<td id="taxes-future">5.000.00</td>
+						<td id="taxes-current">5000.00</td>
+						<td id="taxes-future">5000.00</td>
 					</tr>
 					<tr>
 						<td class="l-align" colspan="2">Insurance</td>
@@ -165,12 +165,29 @@
 
 			// update vacancy 
 			vacancyInc.addEventListener("click", function() {
-				updateValues(true, vacancy, vacancyCurrent, vacancyFuture)
+				updateVacancy(true)
 			})
 			vacancyDec.addEventListener("click", function() {
-				updateValues(false, vacancy, vacancyCurrent, vacancyFuture)
+				updateVacancy(false)
 			})
 
+      function updateVacancy(hasIncreased) {
+				let currentGpr = document.querySelector("#gpr-current")
+				let futureGpr = document.querySelector("#gpr-future")
+				let oldPercent = parseInt(vacancy.textContent)
+				let newPercent;
+
+        if (hasIncreased) {
+					newPercent = Math.min((oldPercent + 1), 100)
+				} else {
+					newPercent = Math.max((oldPercent - 1), 0)
+				}
+
+				let multiplicator = newPercent/ 100
+        vacancyCurrent.textContent = (parseFloat(currentGpr.textContent) * multiplicator).toFixed(2)				
+        vacancyFuture.textContent = (parseFloat(futureGpr.textContent) * multiplicator).toFixed(2)				
+				vacancy.textContent = ' ' + newPercent
+			}
 
 			function updateValues(increase, percent, valueCurrent, valueFuture) {
 				let oldPercent = parseInt(percent.textContent)
@@ -183,8 +200,8 @@
 				}
 
 				if (newPercent != oldPercent) {
-					let currentBase = parseFloat(valueCurrent.textContent) / ((100 + percent)/ 100)
-					let futureBase = parseFloat(valueFuture.textContent) / ((100 + percent)/ 100)
+					let currentBase = parseFloat(valueCurrent.textContent) / ((100 + oldPercent)/ 100)
+					let futureBase = parseFloat(valueFuture.textContent) / ((100 + oldPercent)/ 100)
 					let multiplicator = (100 + newPercent)/ 100 
 					valueCurrent.textContent = (currentBase * multiplicator).toFixed(2)
 					valueFuture.textContent = (futureBase * multiplicator).toFixed(2)
