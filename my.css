@@ -222,6 +222,16 @@ td button {
   background-color: #FF6600;
 }
 
+.percent {
+  padding: 0.2em 0.7em;
+  border-radius: 15px;
+}
+
+.setting {
+    min-width: 3em;
+    padding: 0;
+}
+
 .narrow {
   min-width: 3em;
   width: 3em;

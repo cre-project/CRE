@@ -39,81 +39,84 @@
 				<table id="os">
 					<thead>
 						<tr>
-							<th class="sub-section l-align bolder">Income</th>
+							<th class="sub-section l-align bolder" colspan="2">Income</th>
 							<th class="sub-section">Current</th>
 							<th class="sub-section">Pro Forma</th>
 						</tr>
 					</thead>
 					<tr class="total">
-						<td class="l-align bold">GROSS POTENTIAL RENT</td>
+						<td class="l-align bold" colspan="2">GROSS POTENTIAL RENT</td>
 						<td>$200,000</td>
 						<td>$200,000</td>
 					</tr>
 					<tr>
-						<td id="clickable">Less: Vacancy/Deduction</td>
-						<td id="money">(5.000.00)</td>
-						<td>(5.000.00)</td>
+						<td>Less: Vacancy/Deduction</td>
+						<td class="setting"><button class="percent" id="vacancy-plus">+</button><span id="vacancy">  5</span>% <button class="percent" id="vacancy-minus">-</button></td>
+						<td id="vacancy-current">5.000.00</td>
+						<td id="vacancy-future">5.000.00</td>
 					</tr>
 					<tr class="total">
-						<td class="l-align bold">EFFECTIVE RENTAL INCOME</td>
+						<td class="l-align bold" colspan="2">EFFECTIVE RENTAL INCOME</td>
 						<td>$200,000</td>
 						<td>$200,000</td>
 					</tr>
 					<tr>
-						<td class="sub-section l-align bolder" span="3">Expenses</td>
+						<td class="sub-section l-align bolder" span="4">Expenses</td>
 					</tr>
 					<tr>
 						<td class="l-align">Real Estate Taxes</td>
-						<td id="money">(5.000.00)</td>
-						<td>(5.000.00)</td>
+						<td class="setting"><button class="percent" id="taxes-plus">+</button><span id="taxes">  5</span>% <button class="percent" id="taxes-minus">-</button></td>
+						<td id="taxes-current">5.000.00</td>
+						<td id="taxes-future">5.000.00</td>
 					</tr>
 					<tr>
-						<td class="l-align">Insurance</td>
+						<td class="l-align" colspan="2">Insurance</td>
 						<td>300</td>
 						<td>300</td>
 					</tr>
 					<tr>
-						<td class="l-align">Utilities - Electric</td>
+						<td class="l-align" colspan="2">Utilities - Electric</td>
 						<td>430.00</td>
 						<td>430.00</td>
 					</tr>
 					<tr>
-						<td class="l-align">Utilities - Water & Sewer</td>
+						<td class="l-align" colspan="2">Utilities - Water & Sewer</td>
 						<td>320.00</td>
 						<td>320.00</td>
 					</tr>
 					<tr>
-						<td class="l-align">Garbage</td>
+						<td class="l-align" colspan="2">Garbage</td>
 						<td>934.34</td>
 						<td>934.34</td>
 					</tr>
 					<tr>
-						<td class="l-align">Repairs & Maintenance</td>
+						<td class="l-align" colspan="2">Repairs & Maintenance</td>
 						<td>4.00</td>
 						<td>4.00</td>
 					</tr>
 					<tr>
 						<td class="l-align">Management Fee</td>
-						<td>329.00</td>
-						<td>329.00</td>
+						<td class="setting"><button class="percent" id="mgmt-fee-plus">+</button><span id="mgmt-fee">  5</span>% <button class="percent" id="mgmt-fee-minus">-</button></td>
+						<td id="mgmt-fee-current">329.00</td>
+						<td id="mgmt-fee-future">329.00</td>
 					</tr>
 					<tr>
-						<td class="l-align">Landscaping</td>
+						<td class="l-align" colspan="2">Landscaping</td>
 						<td>239.00</td>
 						<td>239.00</td>
 					</tr>
 					<tr>
-						<td class="l-align">Other Expenses</td>
+						<td class="l-align" colspan="2">Other Expenses</td>
 						<td>400.00</td>
 						<td>400.00</td>
 					</tr>
 					<tr class="total">
-						<td class="l-align bold">TOTAL EXPENSES</td>
+						<td class="l-align bold" colspan="2">TOTAL EXPENSES</td>
 						<td>$200,000</td>
 						<td>$200,000</td>
 					</tr>
 					<tr>
-						<td class="l-align">Net Operating Income</td>
+						<td class="l-align" colspan="2">Net Operating Income</td>
 						<td>$45,498.00</td>
 						<td>$45,498.00</td>
 				</table>
@@ -123,12 +126,71 @@
 			</aside>
 		</div>
 		<script>
-			const button = document.querySelector("#clickable")
-			const money = document.querySelector("#money")
+			// increase and decrease buttons
+			const txInc = document.querySelector("#taxes-plus")
+			const txDec = document.querySelector("#taxes-minus")
+			const mgmtInc = document.querySelector("#mgmt-fee-plus")
+			const mgmtDec = document.querySelector("#mgmt-fee-minus")
+			const vacancyInc = document.querySelector("#vacancy-plus")
+			const vacancyDec = document.querySelector("#vacancy-minus")
 
-			button.addEventListener("click", function() {
-				money.textContent = (parseFloat(money.textContent) * 1.05).toFixed(2)
+			// percentages 
+			const taxes = document.querySelector("#taxes")
+			const mgmtFee = document.querySelector("#mgmt-fee")
+			const vacancy = document.querySelector("#vacancy")
+
+			// values
+			const taxesCurrent = document.querySelector("#taxes-current")
+			const taxesFuture = document.querySelector("#taxes-future")
+			const mgmtCurrent = document.querySelector("#mgmt-fee-current")
+			const mgmtFuture = document.querySelector("#mgmt-fee-future")
+			const vacancyCurrent = document.querySelector("#vacancy-current")
+			const vacancyFuture = document.querySelector("#vacancy-future")
+
+			// update property taxes
+			txInc.addEventListener("click", function() {
+				updateValues(true, taxes, taxesCurrent, taxesFuture)
 			})
+			txDec.addEventListener("click", function() {
+				updateValues(false, taxes, taxesCurrent, taxesFuture)
+			})
+
+			// update management fee
+			mgmtInc.addEventListener("click", function() {
+				updateValues(true, mgmtFee, mgmtCurrent, mgmtFuture)
+			})
+			mgmtDec.addEventListener("click", function() {
+				updateValues(false, mgmtFee, mgmtCurrent, mgmtFuture)
+			})
+
+			// update vacancy 
+			vacancyInc.addEventListener("click", function() {
+				updateValues(true, vacancy, vacancyCurrent, vacancyFuture)
+			})
+			vacancyDec.addEventListener("click", function() {
+				updateValues(false, vacancy, vacancyCurrent, vacancyFuture)
+			})
+
+
+			function updateValues(increase, percent, valueCurrent, valueFuture) {
+				let oldPercent = parseInt(percent.textContent)
+				let newPercent = oldPercent
+
+				if (increase) {
+					newPercent = Math.min((oldPercent + 1), 100)
+				} else {
+					newPercent = Math.max((oldPercent - 1), 0)
+				}
+
+				if (newPercent != oldPercent) {
+					let currentBase = parseFloat(valueCurrent.textContent) / ((100 + percent)/ 100)
+					let futureBase = parseFloat(valueFuture.textContent) / ((100 + percent)/ 100)
+					let multiplicator = (100 + newPercent)/ 100 
+					valueCurrent.textContent = (currentBase * multiplicator).toFixed(2)
+					valueFuture.textContent = (futureBase * multiplicator).toFixed(2)
+					percent.textContent = ' ' + newPercent
+				}
+			}
 
 		</script>
 	</body>
