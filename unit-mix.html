@@ -37,18 +37,22 @@
             <h1>Unit Mix</h1>
             <table>
                 <tr>
-                    <td class="narrow"><input type="checkbox"></th>
                     <th>Unit Type</th>
                     <th>Square Feet</th>
                     <th>Current Rent/Mo.</th>
                     <th>Potential Rent/Mo.</th>
                 </tr>
-                <tr>
-                    <td class="narrow"><input type="checkbox"></th>
-                    <td><button class="table">1 Bedroom & 1 Bathroom &#8964;</button></td>
-                    <td>3650</td>
-                    <td>$2000</td>
-                    <td>$3000</td>
+                <tr class="editable">
+                    <td>
+                        <select class="buttonize down-arrow">
+                            <option>1 Bedroom & 1 Bathroom</option>
+                            <option>1 Bedroom & 2 Bathroom</option>
+                            <option>2 Bedroom & 1 Bathroom</option>
+                        </select>
+                    </td>
+                    <td><input class="inline-edit" disabled value="3650"></td>
+                    <td>$<input class="inline-edit" disabled value="2000"></td>
+                    <td>$<input class="inline-edit" disabled value="3000"></td>
                 </tr>
             </table>
             <div id="add-more">
@@ -57,5 +61,25 @@
             </div>
             <button class="save" type="submit" onclick="location.href='operating-statement.html'">Save & Next</button>
         </div>
+        <script>
+            const addMore = document.getElementById('add-more')
+            const saveButton = document.querySelector('.save')
+            const dropdown = document.querySelector('select')
+            const row = document.querySelector('.editable')
+
+            addMore.addEventListener('click', function() {
+                saveButton.classList.add('hidden')
+                form.classList.remove('hidden')
+            })
+
+            dropdown.addEventListener('click', function(evt) {
+                evt.stopPropagation()
+            })
+
+            row.addEventListener('click', function(evt) {
+                if (evt.target.classList.contains('inline-edit')) return
+                this.querySelectorAll('input').forEach(elem => elem.hasAttribute('disabled') ? elem.removeAttribute('disabled') : elem.setAttribute('disabled', ''))
+            })
+        </script>
 	</body>
 </html>
