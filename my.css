@@ -158,6 +158,22 @@ aside {
     grid-area: right;
 }
 
+aside table {
+    margin: 2em;
+}
+
+aside th {
+   min-width: 2em;
+}
+
+aside thead tr {
+    border: none;
+}
+
+aside td {
+    min-width: 2em;
+}
+
 #tc-header {
     grid-area: top;
     height: 3em;
@@ -249,7 +265,7 @@ td button {
 #os {
     margin: auto auto auto 10em;
     grid-area: left;
-    font-size: 0.9em;
+    font-size: 0.9em;           
     text-align: left;
 }
 
@@ -340,6 +356,22 @@ label:hover input {
   margin-right: 5em;
 }
 
+.side-form {
+    margin-top: 1em; 
+    margin-left: 2em; 
+    line-height: 3em; 
+    font-size:1.5em;
+}
+
+#os-right {
+  background-color: #D8D8D8;
+  border-bottom: 2px solid gray;
+  width: 8em;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
 #add-more {
     margin: auto;
     margin-left: 0;
@@ -371,6 +403,10 @@ button {
   background-color: #FF6600;
 }
 
+button + span {
+    display: inline-block;
+    min-width: 1.5em;
+}
 
 /* Button sub-types */
 .save {

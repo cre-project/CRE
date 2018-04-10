@@ -52,8 +52,8 @@
 					<tr>
 						<td>Less: Vacancy/Deduction</td>
 						<td class="setting"><button class="percent" id="vacancy-plus">+</button><span id="vacancy">  5</span>% <button class="percent" id="vacancy-minus">-</button></td>
-						<td id="vacancy-current">5000.00</td>
-						<td id="vacancy-future">5000.00</td>
+						<td>- $<span id="vacancy-current">5000.00</span></td>
+						<td>- $<span id="vacancy-future">5000.00</span></td>
 					</tr>
 					<tr class="total">
 						<td class="l-align bold" colspan="2">EFFECTIVE RENTAL INCOME</td>
@@ -96,7 +96,7 @@
 					</tr>
 					<tr>
 						<td class="l-align">Management Fee</td>
-						<td class="setting"><button class="percent" id="mgmt-fee-plus">+</button><span id="mgmt-fee">  5</span>% <button class="percent" id="mgmt-fee-minus">-</button></td>
+						<td class="setting"><button class="percent" id="mgmt-fee-plus">+</button>&nbsp;<span id="mgmt-fee">5</span>% <button class="percent" id="mgmt-fee-minus">-</button></td>
 						<td id="mgmt-fee-current">329.00</td>
 						<td id="mgmt-fee-future">329.00</td>
 					</tr>
@@ -116,68 +116,104 @@
 						<td>$200,000</td>
 					</tr>
 					<tr>
-						<td class="l-align" colspan="2">Net Operating Income</td>
-						<td>$45,498.00</td>
-						<td>$45,498.00</td>
+						<td class="l-align bold" colspan="2">Net Operating Income</td>
+						<td class="bold">$45,498.00</td>
+						<td class="bold">$45,498.00</td>
 					</tr>
 				</table>
 				<button class="save" id="operating-statement" type="submit" onclick="location.href='sales-comparables.html'">Save & Next</button>
 			</main>
-			<aside style="background-color: #2C3946;">
-
+			<aside class="total">
+				<div class="side-form">
+						<div class="bold l-align">Price</div>
+						<input type="text" id="os-right" value="$">
+						<p class="bold l-align">Price/Unit: <span>$250000</span></br>Price/SF: <span>$200.10</span></p>
+				</div>
+					<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th>Current</th>
+								<th>Pro Forma</th>
+							</tr>
+						</thead>
+						<tr>
+							<td>CAP Rate</td>
+							<td>5.50%</td>
+							<td>6.00%</td>
+						</tr>
+						<tr>
+							<td>GRM</td>
+							<td>12.1</td>
+							<td>9.21</td>
+						</tr>
+					</table>
 			</aside>
 		</div>
 		<script>
 			// increase and decrease buttons
-			const txInc = document.querySelector("#taxes-plus")
-			const txDec = document.querySelector("#taxes-minus")
-			const mgmtInc = document.querySelector("#mgmt-fee-plus")
-			const mgmtDec = document.querySelector("#mgmt-fee-minus")
-			const vacancyInc = document.querySelector("#vacancy-plus")
-			const vacancyDec = document.querySelector("#vacancy-minus")
+			const txInc = document.querySelector('#taxes-plus')
+			const txDec = document.querySelector('#taxes-minus')
+			const mgmtInc = document.querySelector('#mgmt-fee-plus')
+			const mgmtDec = document.querySelector('#mgmt-fee-minus')
+			const vacancyInc = document.querySelector('#vacancy-plus')
+			const vacancyDec = document.querySelector('#vacancy-minus')
 
 			// percentages 
-			const taxes = document.querySelector("#taxes")
-			const mgmtFee = document.querySelector("#mgmt-fee")
-			const vacancy = document.querySelector("#vacancy")
+			const taxes = document.querySelector('#taxes')
+			const mgmtFee = document.querySelector('#mgmt-fee')
+			const vacancy = document.querySelector('#vacancy')
 
 			// values
-			const taxesCurrent = document.querySelector("#taxes-current")
-			const taxesFuture = document.querySelector("#taxes-future")
-			const mgmtCurrent = document.querySelector("#mgmt-fee-current")
-			const mgmtFuture = document.querySelector("#mgmt-fee-future")
-			const vacancyCurrent = document.querySelector("#vacancy-current")
-			const vacancyFuture = document.querySelector("#vacancy-future")
+			const taxesCurrent = document.querySelector('#taxes-current')
+			const taxesFuture = document.querySelector('#taxes-future')
+			const mgmtCurrent = document.querySelector('#mgmt-fee-current')
+			const mgmtFuture = document.querySelector('#mgmt-fee-future')
+			const vacancyCurrent = document.querySelector('#vacancy-current')
+			const vacancyFuture = document.querySelector('#vacancy-future')
+
+			const currentGpr = document.querySelector('#gpr-current')
+			const futureGpr = document.querySelector('#gpr-future')
+
+      const inputs = Array.from(document.querySelectorAll('#os input'))
+			
+      inputs.forEach(function(el) {
+				el.addEventListener('input', function() {
+					if (isNaN(this.value)) {
+						this.style.color = 'red'
+					} else {
+						this.style.color = 'inherit'
+					}
+				})
+			})
 
 			// update property taxes
-			txInc.addEventListener("click", function() {
-				updateValues(true, taxes, taxesCurrent, taxesFuture)
+			txInc.addEventListener('click', function() {
+        handleChange(true, taxes, currentGpr, futureGpr, taxesCurrent,taxesFuture)
 			})
-			txDec.addEventListener("click", function() {
-				updateValues(false, taxes, taxesCurrent, taxesFuture)
+			txDec.addEventListener('click', function() {
+        handleChange(false, taxes, currentGpr, futureGpr, taxesCurrent,taxesFuture)
 			})
 
 			// update management fee
-			mgmtInc.addEventListener("click", function() {
-				updateValues(true, mgmtFee, mgmtCurrent, mgmtFuture)
+			mgmtInc.addEventListener('click', function() {
+				handleChange(true, mgmtFee, currentGpr, futureGpr, mgmtCurrent, mgmtFuture)
 			})
-			mgmtDec.addEventListener("click", function() {
-				updateValues(false, mgmtFee, mgmtCurrent, mgmtFuture)
+			mgmtDec.addEventListener('click', function() {
+				handleChange(false, mgmtFee, currentGpr, futureGpr, mgmtCurrent, mgmtFuture)
 			})
 
 			// update vacancy 
-			vacancyInc.addEventListener("click", function() {
-				updateVacancy(true)
+			vacancyInc.addEventListener('click', function() {
+				handleChange(true, vacancy, currentGpr, futureGpr, vacancyCurrent, vacancyFuture)
 			})
-			vacancyDec.addEventListener("click", function() {
-				updateVacancy(false)
+			vacancyDec.addEventListener('click', function() {
+				handleChange(false, vacancy, currentGpr, futureGpr, vacancyCurrent, vacancyFuture)
 			})
 
-      function updateVacancy(hasIncreased) {
-				let currentGpr = document.querySelector("#gpr-current")
-				let futureGpr = document.querySelector("#gpr-future")
-				let oldPercent = parseInt(vacancy.textContent)
-				let newPercent;
+			function handleChange(hasIncreased, percentInput, srcCurrent, srcFuture, targetCurrent, targetFuture) {
+				const oldPercent = parseInt(percentInput.textContent)
+        let newPercent = oldPercent
 
         if (hasIncreased) {
 					newPercent = Math.min((oldPercent + 1), 100)
@@ -185,32 +221,17 @@
 					newPercent = Math.max((oldPercent - 1), 0)
 				}
 
+				if (oldPercent != newPercent) {
+          targetCurrent.textContent = calculatePercentage(newPercent, parseFloat(srcCurrent.textContent))
+          targetFuture.textContent = calculatePercentage(newPercent, parseFloat(srcFuture.textContent))
+					percentInput.textContent = newPercent
+				}
+			}
+
+			function calculatePercentage(newPercent, baseValue) {
 				let multiplicator = newPercent/ 100
-        vacancyCurrent.textContent = (parseFloat(currentGpr.textContent) * multiplicator).toFixed(2)				
-        vacancyFuture.textContent = (parseFloat(futureGpr.textContent) * multiplicator).toFixed(2)				
-				vacancy.textContent = ' ' + newPercent
+        return (baseValue * multiplicator).toFixed(2)
 			}
-
-			function updateValues(increase, percent, valueCurrent, valueFuture) {
-				let oldPercent = parseInt(percent.textContent)
-				let newPercent = oldPercent
-
-				if (increase) {
-					newPercent = Math.min((oldPercent + 1), 100)
-				} else {
-					newPercent = Math.max((oldPercent - 1), 0)
-				}
-
-				if (newPercent != oldPercent) {
-					let currentBase = parseFloat(valueCurrent.textContent) / ((100 + oldPercent)/ 100)
-					let futureBase = parseFloat(valueFuture.textContent) / ((100 + oldPercent)/ 100)
-					let multiplicator = (100 + newPercent)/ 100 
-					valueCurrent.textContent = (currentBase * multiplicator).toFixed(2)
-					valueFuture.textContent = (futureBase * multiplicator).toFixed(2)
-					percent.textContent = ' ' + newPercent
-				}
-			}
-
 		</script>
 	</body>
 </html>
