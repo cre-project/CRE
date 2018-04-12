@@ -36,24 +36,28 @@
         <div class="wrapper">
             <h1>Unit Mix</h1>
             <table>
-                <tr>
-                    <th>Unit Type</th>
-                    <th>Square Feet</th>
-                    <th>Current Rent/Mo.</th>
-                    <th>Potential Rent/Mo.</th>
-                </tr>
-                <tr class="editable">
-                    <td>
-                        <select class="buttonize down-arrow">
-                            <option>1 Bedroom & 1 Bathroom</option>
-                            <option>1 Bedroom & 2 Bathroom</option>
-                            <option>2 Bedroom & 1 Bathroom</option>
-                        </select>
-                    </td>
-                    <td><input class="inline-edit" disabled value="3650"></td>
-                    <td>$<input class="inline-edit" disabled value="2000"></td>
-                    <td>$<input class="inline-edit" disabled value="3000"></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Unit Type</th>
+                        <th>Square Feet</th>
+                        <th>Current Rent/Mo.</th>
+                        <th>Potential Rent/Mo.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="editable">
+                        <td>
+                            <select class="buttonize down-arrow">
+                                <option>1 Bedroom & 1 Bathroom</option>
+                                <option>1 Bedroom & 2 Bathroom</option>
+                                <option>2 Bedroom & 1 Bathroom</option>
+                            </select>
+                        </td>
+                        <td><input class="inline-edit" disabled value="3650"></td>
+                        <td>$<input class="inline-edit" disabled value="2000"></td>
+                        <td>$<input class="inline-edit" disabled value="3000"></td>
+                    </tr>
+                </tbody>
             </table>
             <div id="add-more">
                 <div class="add-more-content" id="plus">+</div>
@@ -62,14 +66,17 @@
             <button class="save" type="submit" onclick="location.href='operating-statement.html'">Save & Next</button>
         </div>
         <script>
-            const addMore = document.getElementById('add-more')
+            const addMore = document.getElementById('plus')
             const saveButton = document.querySelector('.save')
             const dropdown = document.querySelector('select')
+            const table = document.getElementsByTagName('tbody')[0]
+            // TODO fix for multiple rows
             const row = document.querySelector('.editable')
 
             addMore.addEventListener('click', function() {
-                saveButton.classList.add('hidden')
-                form.classList.remove('hidden')
+                // saveButton.classList.add('hidden')
+                // form.classList.remove('hidden')
+                addNewRow()
             })
 
             dropdown.addEventListener('click', function(evt) {
@@ -80,6 +87,47 @@
                 if (evt.target.classList.contains('inline-edit')) return
                 this.querySelectorAll('input').forEach(elem => elem.hasAttribute('disabled') ? elem.removeAttribute('disabled') : elem.setAttribute('disabled', ''))
             })
+
+            function addNewRow() {
+                const newRow = table.insertRow(table.rows.length);
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                const cell3 = newRow.insertCell(2);
+                const cell4 = newRow.insertCell(3);
+
+                const dropdown = document.createElement('select') 
+                const option1 = document.createElement('option') 
+                const option2 = document.createElement('option') 
+                const option3 = document.createElement('option') 
+
+                const input2 = document.createElement('input')
+                const input3 = document.createElement('input')
+                const input4 = document.createElement('input')
+
+                newRow.classList.add('editable')
+                dropdown.classList.add('buttonize')
+                dropdown.classList.add('down-arrow')
+
+                option1.innerText = '1 Bedroom & 1 Bathroom'
+                option2.innerText = '1 Bedroom & 2 Bathroom'
+                option3.innerText = '2 Bedroom & 1 Bathroom'
+
+                dropdown.appendChild(option1)
+                dropdown.appendChild(option2)
+                dropdown.appendChild(option3)
+                
+                input2.classList.add('inline-edit')
+                input3.classList.add('inline-edit')
+                input4.classList.add('inline-edit')
+
+                cell3.innerText = '$';
+                cell4.innerText = '$';
+
+                cell1.appendChild(dropdown);
+                cell2.appendChild(input2);
+                cell3.appendChild(input3);
+                cell4.appendChild(input4);
+            }
         </script>
 	</body>
 </html>

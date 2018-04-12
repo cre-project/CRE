@@ -141,7 +141,7 @@ nav ul li a {
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 2fr;
-    grid-template-rows: 8em 3fr 0.5fr 1fr 1fr;
+    grid-template-rows: 8em 3fr 1em 1fr 1fr;
   }
 
 .two-columns {
@@ -375,6 +375,22 @@ label:hover input {
 #add-more {
     margin: auto;
     margin-left: 0;
+    margin-top: 0;
+    max-height: 4.3em;
+    width: 85%;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    padding: 0.5em 0.8em;
+    border: 1px dashed darkgray;
+    border-radius: 20px;
+    vertical-align: middle;
+}
+
+.unit-mix {
+    margin: auto;
+    margin-left: 0;
     max-height: 4.3em;
     width: 85%;
     grid-column-start: 2;
@@ -451,6 +467,18 @@ button + span {
     border: 1px dashed darkgray;
     border-radius: 25%;
     float: left;
+}
+
+.ok {
+    width: 2.5em;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    border: 1px solid darkgray;
+    color: #2CC0BE;
+    background-color: white;
+    border-radius: 25%;
+    float: right;
 }
 
 #header {
