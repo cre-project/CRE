@@ -43,7 +43,7 @@
                     <th>Cap Rate</th>
                     <th># of Units</th>
                 </tr>
-                <tr>
+                <tr class="editable">
                     <td>North Beach Villa</td>
                     <td>690 Chestnut Street, San Francisco, CA 94911</td>
                     <td>$4,800,000</td>
@@ -54,8 +54,78 @@
             <div id="add-more">
                 <div class="add-more-content" id="plus">+</div>
                 <span class="add-more-content">Add Another Unit</span>
+                <div class="add-more-content hidden" id="ok">ok</div>
+                <form class="hidden"></form>
             </div>
             <button class="save" type="submit" onclick="location.href='rent-comparables.html';">Save & Next</button>
         </div>
+        <script>
+            const table = document.getElementsByTagName('table')[0]
+            const row = document.querySelector('.editable')
+            const form = document.querySelector('form')
+            const plus = document.getElementById('plus')
+            const addMore = document.getElementById('add-more')
+            const ok = document.getElementById('ok')
+            const saveButton = document.querySelector('.save')
+
+            const wrapper = document.querySelector('.wrapper')
+
+            plus.addEventListener('click', function() {
+                saveButton.classList.add('hidden')
+                addMore.classList.add('expanded')
+                wrapper.classList.add('resized')
+                ok.classList.remove('hidden')
+                form.classList.remove('hidden')
+            })
+
+            ok.addEventListener('click', function() {
+                wrapper.classList.remove('resized')
+                addMore.classList.remove('expanded')
+                wrapper.classList.remove('resized')
+                saveButton.classList.remove('hidden')
+                ok.classList.add('hidden')
+                addNewRow()
+            })
+
+            row.addEventListener('click', function(evt) {
+                if (evt.target.classList.contains('inline-edit')) return
+                this.querySelectorAll('input').forEach(elem => elem.hasAttribute('disabled') ? elem.removeAttribute('disabled') : elem.setAttribute('disabled', ''))
+            })
+
+
+            function addNewRow() {
+                const newRow = table.insertRow(table.rows.length);
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                const cell3 = newRow.insertCell(2);
+                const cell4 = newRow.insertCell(3);
+                const cell5 = newRow.insertCell(4);
+
+                const input1 = document.createElement('input')
+                const input2 = document.createElement('input')
+                const input3 = document.createElement('input')
+                const input4 = document.createElement('input')
+                const input5 = document.createElement('input')
+                const percent = document.createElement('span')
+
+                newRow.classList.add('editable')
+
+                const inputs = document.querySelectorAll('input')
+                inputs.forEach(element => {
+                    element.classList.add('inline-edit')
+                    element.classList.add('disabled')
+                });
+
+                cell3.innerText = '$';
+                percent.innerText = '%';
+
+                cell1.appendChild(input1);
+                cell2.appendChild(input2);
+                cell3.appendChild(input3);
+                cell4.appendChild(input4);
+                cell4.appendChild(percent)
+                cell5.appendChild(input5);
+            }
+        </script>
 	</body>
 </html>
