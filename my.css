@@ -331,6 +331,13 @@ form {
     width: 20%;
 }
 
+#form-5 {
+    float: left;
+    margin-left: 1.5em;
+    width: 40%;
+    display: flex;
+}
+
 #right {
     margin-left: 30em;
 }

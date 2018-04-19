@@ -50,10 +50,139 @@
                 </tr>
             </table>
             <div id="add-more">
-                <div class="add-more-content" id="plus">+</div>
                 <span class="add-more-content">Add Another Unit</span>
+                <div class="add-more-content" id="plus">+</div>
+                <span class="add-more-content text ita bold hidden">Property Information</span>
+                <span class="add-more-content text ita bold hidden" id="right">Rent Information</span>
+                    <div class="hidden popup-form">
+                        <!-- part 1 of the form -->
+                        <form id="form-1">
+                            <label>
+                                <div>Property Name</div>
+                                <input>
+                            </label>
+                            <label>
+                                <div>Property Address</div>
+                                <input>
+                            </label>
+                            <label>
+                                <div>City</div>
+                                <input>
+                            </label>
+                        </form>
+                        <!-- part 2 of the form -->
+                        <form id="form-2">
+                            <label class="half-size">
+                                <div class="half-size">State</div>
+                                <input class="half-size">
+                            </label>
+                            <label class="half-size">
+                                <div class="half-size">ZIP</div>
+                                <input class="half-size">
+                            </label>
+                            <label class="half-size">
+                                <div class="half-size">Year built</div>
+                                <input class="half-size">
+                            </label>
+                        </form>
+                        <!-- part 3 of the form -->
+                        <form id="form-5">
+                            <label class="half-size">
+                                <div class="half-size">Unit Type</div>
+                                <input class="half-size">
+                            </label>
+                            <label class="half-size">
+                                <div class="half-size">Current Rent/Mo.</div>
+                                <input class="half-size">
+                            </label>
+                        </form>
+                    </div>
             </div>
             <button class="save" type="submit" onclick="location.href='preview.html';">Save & Next</button>
         </div>
+        <script>
+            const table = document.getElementsByTagName('table')[0]
+            // FIXME add edit button
+            const row = document.querySelector('.editable')
+            const form = document.querySelector('.popup-form')
+            const plus = document.getElementById('plus')
+            const addMore = document.getElementById('add-more')
+            const text = document.querySelectorAll('span')
+            const saveButton = document.querySelector('.save')
+
+            const wrapper = document.querySelector('.wrapper')
+
+            plus.addEventListener('click', function(evt) {
+                if (evt.target.classList.contains('ok')) {
+                    // closing popup
+                    wrapper.classList.remove('resized')
+                    addMore.classList.remove('expanded')
+                    wrapper.classList.remove('resized')
+                    saveButton.classList.remove('hidden')
+                    plus.classList.remove('ok')
+                    plus.textContent = '+'
+                    
+                    form.classList.add('hidden')
+                    text.forEach(function(t) {
+                        if (t.classList.contains('text')) {
+                            t.classList.add('hidden') 
+                        } else { 
+                            t.classList.remove('hidden')
+                        }
+                    })
+                    
+                    addNewRow()
+                } else {
+                    // opening popup
+                    saveButton.classList.add('hidden')
+                    addMore.classList.add('expanded')
+                    wrapper.classList.add('resized')
+                    plus.classList.add('ok')
+                    plus.textContent = 'ok'
+
+                    form.classList.remove('hidden')
+                    text.forEach(function(t) {
+                        if (t.classList.contains('text')) {
+                            t.classList.remove('hidden') 
+                        } else { 
+                            t.classList.add('hidden')
+                        }
+                    })
+                }
+            })
+
+            // FIXME add edit button
+            row.addEventListener('click', function(evt) {
+                if (evt.target.classList.contains('inline-edit')) return
+                this.querySelectorAll('input').forEach(elem => elem.hasAttribute('disabled') ? elem.removeAttribute('disabled') : elem.setAttribute('disabled', ''))
+            })
+
+
+            function addNewRow() {
+                const newRow = table.insertRow(table.rows.length);
+                newRow.classList.add('editable')
+
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                const cell3 = newRow.insertCell(2);
+                const cell4 = newRow.insertCell(3);
+
+                let inputs = []
+                for (var i = 1; i < 5; i ++) {
+                    inputs.push(document.createElement('input'))
+                } 
+                inputs.forEach(element => {
+                    element.classList.add('inline-edit')
+                    element.classList.add('disabled')
+                });
+
+                cell4.innerText = '$';
+
+                cell1.appendChild(inputs[0]);
+                cell2.appendChild(inputs[1]);
+                cell3.appendChild(inputs[2]);
+                cell4.appendChild(inputs[3]);
+            }
+        </script>
 	</body>
 </html>
