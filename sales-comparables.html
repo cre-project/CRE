@@ -123,6 +123,7 @@
         </div>
         <script>
             const table = document.getElementsByTagName('table')[0]
+            // FIXME add edit button
             const row = document.querySelector('.editable')
             const form = document.querySelector('.popup-form')
             const plus = document.getElementById('plus')
@@ -171,6 +172,7 @@
                 }
             })
 
+            // FIXME add edit button
             row.addEventListener('click', function(evt) {
                 if (evt.target.classList.contains('inline-edit')) return
                 this.querySelectorAll('input').forEach(elem => elem.hasAttribute('disabled') ? elem.removeAttribute('disabled') : elem.setAttribute('disabled', ''))
@@ -185,10 +187,6 @@
                 const cell4 = newRow.insertCell(3);
                 const cell5 = newRow.insertCell(4);
 
-                const input2 = document.createElement('input')
-                const input3 = document.createElement('input')
-                const input4 = document.createElement('input')
-                const input5 = document.createElement('input')
                 const percent = document.createElement('span')
 
                 newRow.classList.add('editable')
