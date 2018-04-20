@@ -4,7 +4,8 @@
 		<title></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="my.css" />
 	</head>
 	<body>
@@ -42,17 +43,11 @@
                     <th>Price</th>
                     <th>Cap Rate</th>
                     <th># of Units</th>
-                </tr>
-                <tr class="editable">
-                    <td>North Beach Villa</td>
-                    <td>690 Chestnut Street, San Francisco, CA 94911</td>
-                    <td>$4,800,000</td>
-                    <td>4.3%</td>
-                    <td>14</td>
+                    <th></th>
                 </tr>
             </table>
             <div id="add-more">
-                <span class="add-more-content">Add Another Unit</span>
+                <span class="add-more-content">Add a Unit</span>
                 <div class="add-more-content" id="plus">+</div>
                 <span class="add-more-content text ita bold hidden">Property Information</span>
                 <span class="add-more-content text ita bold hidden" id="right">Financial Information</span>
@@ -61,60 +56,60 @@
                         <form id="form-1">
                             <label>
                                 <div>Property Name</div>
-                                <input>
+                                <input placeholder="North Beach Villa">
                             </label>
                             <label>
                                 <div>Property Address</div>
-                                <input>
+                                <input placeholder="690 Chestnut Street">
                             </label>
                             <label>
                                 <div>City</div>
-                                <input>
+                                <input placeholder="San Francisco">
                             </label>
                         </form>
                         <!-- part 2 of the form -->
                         <form id="form-2">
                             <label class="half-size">
                                 <div class="half-size">State</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="CA">
                             </label>
                             <label class="half-size">
                                 <div class="half-size">ZIP</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="94911">
                             </label>
                             <label class="half-size">
                                 <div class="half-size">Year built</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="1978">
                             </label>
                         </form>
                         <!-- part 3 of the form -->
                         <form id="form-3">
                             <label class="half-size">
                                 <div class="half-size">Sales Price</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="$3,400,000">
                             </label>
                             <label class="half-size">
                                 <div class="half-size">Total # of Units</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="16">
                             </label>
                             <label class="half-size">
                                 <div class="half-size">Total Price/Unit</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="$212,500">
                             </label>
                         </form>
                         <!-- part 4 of the form -->
                         <form id="form-4">
                             <label class="half-size">
                                 <div class="half-size">Cap Rate</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="4.2%">
                             </label>
                             <label class="half-size">
                                 <div class="half-size">GRM</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="12.12">
                             </label>
                             <label class="half-size">
                                 <div class="half-size">Price/SF</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="$138.22">
                             </label>
                         </form>
                     </div>
@@ -123,8 +118,7 @@
         </div>
         <script>
             const table = document.getElementsByTagName('table')[0]
-            // FIXME add edit button
-            const row = document.querySelector('.editable')
+            const editButton = document.querySelector('.editable')
             const form = document.querySelector('.popup-form')
             const plus = document.getElementById('plus')
             const addMore = document.getElementById('add-more')
@@ -173,7 +167,8 @@
             })
 
             // FIXME add edit button
-            row.addEventListener('click', function(evt) {
+            editButton.addEventListener('click', function(evt) {
+                console.log('hello')
                 if (evt.target.classList.contains('inline-edit')) return
                 this.querySelectorAll('input').forEach(elem => elem.hasAttribute('disabled') ? elem.removeAttribute('disabled') : elem.setAttribute('disabled', ''))
             })
@@ -181,27 +176,39 @@
 
             function addNewRow() {
                 const newRow = table.insertRow(table.rows.length);
+
                 const cell1 = newRow.insertCell(0);
                 const cell2 = newRow.insertCell(1);
                 const cell3 = newRow.insertCell(2);
                 const cell4 = newRow.insertCell(3);
                 const cell5 = newRow.insertCell(4);
+                const cell6 = newRow.insertCell(5);
+                cell6.classList.add('editable')
 
                 const percent = document.createElement('span')
-
-                newRow.classList.add('editable')
+                const editIcon = document.createElement('i')
 
                 let inputs = []
                 for (var i = 1; i < 6; i ++) {
                     inputs.push(document.createElement('input'))
                 } 
                 inputs.forEach(element => {
-                    element.classList.add('inline-edit')
+                    // element.classList.add('inline-edit')
                     element.classList.add('disabled')
                 });
 
-                cell3.innerText = '$';
-                percent.innerText = '%';
+                editIcon.classList.add('medium')
+                editIcon.classList.add('material-icons')
+                editIcon.innerText = 'edit'
+                // percent.innerText = '%';
+                // cell3.innerText = '$';
+
+                // FIXME use user input - now adding default data
+                cell1.innerText = 'North Beach Villa'
+                cell2.innerText = '690 Chestnut Street, San Francisco, CA 94911'
+                cell3.innerText = '$4,800,000'
+                cell4.innerText = '4.3%'
+                cell5.innerText = '14'
 
                 cell1.appendChild(inputs[0]);
                 cell2.appendChild(inputs[1]);
@@ -209,6 +216,7 @@
                 cell4.appendChild(inputs[3]);
                 cell4.appendChild(percent)
                 cell5.appendChild(inputs[4]);
+                cell6.appendChild(editIcon);
             }
         </script>
 	</body>
