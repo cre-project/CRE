@@ -112,6 +112,7 @@
                                 <input class="half-size" placeholder="$138.22">
                             </label>
                         </form>
+                        <button class="add hidden">Add</button>
                     </div>
             </div>
             <button class="save" type="submit" onclick="location.href='rent-comparables.html';">Save & Next</button>
@@ -124,46 +125,44 @@
             const addMore = document.getElementById('add-more')
             const text = document.querySelectorAll('span')
             const saveButton = document.querySelector('.save')
+            const addButton = document.querySelector('.add')
 
             const wrapper = document.querySelector('#main')
 
-            plus.addEventListener('click', function(evt) {
-                if (evt.target.classList.contains('ok')) {
-                    // closing popup
-                    wrapper.classList.remove('resized')
-                    addMore.classList.remove('expanded')
-                    wrapper.classList.remove('resized')
-                    saveButton.classList.remove('hidden')
-                    plus.classList.remove('ok')
-                    plus.textContent = '+'
-                    
-                    form.classList.add('hidden')
-                    text.forEach(function(t) {
-                        if (t.classList.contains('text')) {
-                            t.classList.add('hidden') 
-                        } else { 
-                            t.classList.remove('hidden')
-                        }
-                    })
-                    
-                    addNewRow()
-                } else {
-                    // opening popup
-                    saveButton.classList.add('hidden')
-                    addMore.classList.add('expanded')
-                    wrapper.classList.add('resized')
-                    plus.classList.add('ok')
-                    plus.textContent = 'ok'
+            addButton.addEventListener('click', function() {
+                // closing popup
+                wrapper.classList.remove('resized')
+                addMore.classList.remove('expanded')
+                wrapper.classList.remove('resized')
+                saveButton.classList.remove('hidden')
+                addButton.classList.add('hidden')
+                
+                form.classList.add('hidden')
+                text.forEach(function(t) {
+                    if (t.classList.contains('text')) {
+                        t.classList.add('hidden') 
+                    } else { 
+                        t.classList.remove('hidden')
+                    }
+                })
+                addNewRow()
+            })
 
-                    form.classList.remove('hidden')
-                    text.forEach(function(t) {
-                        if (t.classList.contains('text')) {
-                            t.classList.remove('hidden') 
-                        } else { 
-                            t.classList.add('hidden')
-                        }
-                    })
-                }
+            plus.addEventListener('click', function() {
+                // opening popup
+                saveButton.classList.add('hidden')
+                addMore.classList.add('expanded')
+                wrapper.classList.add('resized')
+
+                form.classList.remove('hidden')
+                addButton.classList.remove('hidden')
+                text.forEach(function(t) {
+                    if (t.classList.contains('text')) {
+                        t.classList.remove('hidden') 
+                    } else { 
+                        t.classList.add('hidden')
+                    }
+                })
             })
 
             // FIXME add edit button

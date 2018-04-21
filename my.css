@@ -495,10 +495,11 @@ button + span {
   width: 120px;
 }
 
-.ok {
-    border: 3px solid #2CC0BE;
-    color: #2CC0BE;
-    background-color: white;
+.add {
+    vertical-align: middle;
+    padding: 0.5em 2em;
+    float: left;
+    margin-left: 30.5em;
 }
 
 #completed {
