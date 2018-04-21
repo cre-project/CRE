@@ -88,14 +88,19 @@
                         <!-- part 3 of the form -->
                         <form id="form-5">
                             <label class="half-size">
-                                <div class="half-size">Unit Type</div>
-                                <input class="half-size">
+                                <div class="half-size more-padding">Unit Type</div>
+                                <select class="buttonize down-arrow">
+                                    <option>1 Bedroom & 1 Bathroom</option>
+                                    <option>1 Bedroom & 2 Bathroom</option>
+                                    <option>2 Bedroom & 1 Bathroom</option>
+                                </select>
                             </label>
-                            <label class="half-size">
-                                <div class="half-size">Current Rent/Mo.</div>
+                            <label class="half-size l-margin">
+                                <div class="half-size more-padding">Current Rent/Mo.</div>
                                 <input class="half-size">
                             </label>
                         </form>
+                        <button class="add hidden" id="rent">Add</button>
                     </div>
             </div>
             <button class="save" type="submit" onclick="location.href='preview.html';">Save & Next</button>
@@ -109,46 +114,44 @@
             const addMore = document.getElementById('add-more')
             const text = document.querySelectorAll('span')
             const saveButton = document.querySelector('.save')
+            const addButton = document.querySelector('.add')
 
             const wrapper = document.querySelector('.wrapper')
 
-            plus.addEventListener('click', function(evt) {
-                if (evt.target.classList.contains('ok')) {
-                    // closing popup
-                    wrapper.classList.remove('resized')
-                    addMore.classList.remove('expanded')
-                    wrapper.classList.remove('resized')
-                    saveButton.classList.remove('hidden')
-                    plus.classList.remove('ok')
-                    plus.textContent = '+'
-                    
-                    form.classList.add('hidden')
-                    text.forEach(function(t) {
-                        if (t.classList.contains('text')) {
-                            t.classList.add('hidden') 
-                        } else { 
-                            t.classList.remove('hidden')
-                        }
-                    })
-                    
-                    addNewRow()
-                } else {
-                    // opening popup
-                    saveButton.classList.add('hidden')
-                    addMore.classList.add('expanded')
-                    wrapper.classList.add('resized')
-                    plus.classList.add('ok')
-                    plus.textContent = 'ok'
+            addButton.addEventListener('click', function() {
+                // closing popup
+                wrapper.classList.remove('resized')
+                addMore.classList.remove('expanded')
+                wrapper.classList.remove('resized')
+                saveButton.classList.remove('hidden')
+                addButton.classList.add('hidden')
+                
+                form.classList.add('hidden')
+                text.forEach(function(t) {
+                    if (t.classList.contains('text')) {
+                        t.classList.add('hidden') 
+                    } else { 
+                        t.classList.remove('hidden')
+                    }
+                })
+                addNewRow()
+            })
 
-                    form.classList.remove('hidden')
-                    text.forEach(function(t) {
-                        if (t.classList.contains('text')) {
-                            t.classList.remove('hidden') 
-                        } else { 
-                            t.classList.add('hidden')
-                        }
-                    })
-                }
+            plus.addEventListener('click', function() {
+                // opening popup
+                saveButton.classList.add('hidden')
+                addMore.classList.add('expanded')
+                wrapper.classList.add('resized')
+
+                form.classList.remove('hidden')
+                addButton.classList.remove('hidden')
+                text.forEach(function(t) {
+                    if (t.classList.contains('text')) {
+                        t.classList.remove('hidden') 
+                    } else { 
+                        t.classList.add('hidden')
+                    }
+                })
             })
 
             // FIXME add edit button
@@ -172,7 +175,7 @@
                     inputs.push(document.createElement('input'))
                 } 
                 inputs.forEach(element => {
-                    element.classList.add('inline-edit')
+                    // element.classList.add('inline-edit')
                     element.classList.add('disabled')
                 });
 
