@@ -42,12 +42,6 @@
                     <th>Type</th>
                     <th>Rent</th>
                 </tr>
-                <tr>
-                    <td>North Beach Villa</td>
-                    <td>690 Chestnut Street, San Francisco, CA 94911</td>
-                    <td>1 Bedroom & 1 Bathroom</td>
-                    <td>$2,100</td>
-                </tr>
             </table>
             <div id="add-more">
                 <span class="add-more-content">Add Another Unit</span>
@@ -59,30 +53,30 @@
                         <form id="form-1">
                             <label>
                                 <div>Property Name</div>
-                                <input>
+                                <input placeholder="North Beach Villa">
                             </label>
                             <label>
                                 <div>Property Address</div>
-                                <input>
+                                <input placeholder="690 Chestnut Street">
                             </label>
                             <label>
                                 <div>City</div>
-                                <input>
+                                <input placeholder="San Francisco">
                             </label>
                         </form>
                         <!-- part 2 of the form -->
                         <form id="form-2">
                             <label class="half-size">
                                 <div class="half-size">State</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="CA">
                             </label>
                             <label class="half-size">
                                 <div class="half-size">ZIP</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="94911">
                             </label>
                             <label class="half-size">
                                 <div class="half-size">Year built</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="1978">
                             </label>
                         </form>
                         <!-- part 3 of the form -->
@@ -97,7 +91,7 @@
                             </label>
                             <label class="half-size l-margin">
                                 <div class="half-size more-padding">Current Rent/Mo.</div>
-                                <input class="half-size">
+                                <input class="half-size" placeholder="$2,100">
                             </label>
                         </form>
                         <button class="add hidden" id="rent">Add</button>
@@ -179,7 +173,10 @@
                     element.classList.add('disabled')
                 });
 
-                cell4.innerText = '$';
+                cell1.innerText = 'North Beach Villa'
+                cell2.innerText = '690 Chestnut Street, San Francisco, CA 94911'
+                cell3.innerText = '1 Bedroom & 1 Bathroom'
+                cell4.innerText = '$2,100';
 
                 cell1.appendChild(inputs[0]);
                 cell2.appendChild(inputs[1]);
