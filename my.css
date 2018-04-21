@@ -226,6 +226,7 @@ th, td {
   min-width: 15em;
   padding: 1em;
   text-align: center;
+  vertical-align: middle;
 }
 
 td button {
@@ -466,6 +467,12 @@ button + span {
     min-width: 1.5em;
 }
 
+img {
+   width: 200px;
+   display: inline-block;
+   vertical-align: middle;
+}
+
 /* Pop-ups */
 .expanded {
   min-height: 25em;
@@ -664,3 +671,9 @@ br {
 .more-padding {
     padding-bottom: 2em;
 }
+
+.reset-box {
+    width: auto;
+    margin: 0;
+}
+
