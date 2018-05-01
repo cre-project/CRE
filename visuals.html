@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="my.css" />
+	</head>
+	<body>
+		<header>
+            <div class="header-image"  id="logo-small" onclick="location.href='index.html';">
+                <img class="header-image" src="t-logo-small.png" alt="Your logo here" />
+            </div>
+			<div id="menu">
+                <div id="label">BETA</div>
+                Marvin
+				<div id="symbol">&#8964;</div>
+                <div class="header-image" id="search">
+                    <img class="header-image"  src="search-icon.png" alt="Seach" />
+                </div>
+			</div> 
+		</header>
+		<header id="sub-header">
+			<nav>
+				<ul>
+					<li><a href="property-info.html">PROPERTY INFO</a></li>
+					<li><a href="unit-mix.html">UNIT MIX</a></li>
+					<li><a href="operating-statement.html">OPERATING STATEMENT</a></li>
+					<li><a href="sales-comparables.html">SALES COMPARABLES</a></li>
+					<li><a href="rent-comparables.html">RENT COMPARABLES</a></li>
+					<li id="selected"><a>VISUALS</a></li>
+					<li><a href="preview.html">PREVIEW</a></li>
+				</ul>
+			</nav>
+        </header>
+        <div class="wrapper">
+            <h1>Visuals</h1>
+            <table>
+                <tr class="bold">
+                    <th>SECTION</th>
+                    <th>UPLOAD IMAGE</th>
+                    <th>EDIT</th>
+                </tr>
+                <tr>
+                    <td>Cover Page</td>
+                    <td>
+						<label class="reset-box">
+							<img class="hidden" id="cover-img"></img>
+							<input type="file" class="save hidden" id="cover">
+							<i class="large material-icons" id="cover-i">add_a_photo</i>
+						</label>
+					</td>
+                    <td><i class="medium material-icons">edit</i></td>
+                </tr>
+                <tr>
+                    <td>Table of Contents</td>
+                    <td>
+						<label class="reset-box">
+							<img class="hidden" id="toc-img"></img>
+							<input type="file" class="save hidden" id="toc">
+							<i class="large material-icons" id="toc-i">add_a_photo</i>
+						</label>
+					</td>
+                    <td><i class="medium material-icons">edit</i></td>
+                </tr>
+                <tr>
+                    <td>Back Page</td>
+                    <td>
+						<label class="reset-box">
+							<img class="hidden" id="bp-img"></img>
+							<input type="file" class="save hidden" id="bp">
+							<i class="large material-icons" id="bp-i">add_a_photo</i>
+						</label>
+					</td>
+                    <td><i class="medium material-icons">edit</i></td>
+                </tr>
+			</table>
+            <button class="save" type="submit" onclick="location.href='preview.html';">Preview PDF</button>
+		</div>
+		<script>
+			const coverPage = document.querySelector('#cover')
+			const coverImg = document.querySelector('#cover-img')
+			const coverIcon = document.querySelector('#cover-i')
+
+			const toc = document.querySelector('#toc')
+			const tocImg = document.querySelector('#toc-img')
+			const tocIcon = document.querySelector('#toc-i')
+
+			const backPage = document.querySelector('#bp')
+			const backPageImg = document.querySelector('#bp-img')
+			const backPageIcon = document.querySelector('#bp-i')
+			
+			coverPage.addEventListener('input', makeLoadImage(coverImg, coverIcon))
+			toc.addEventListener('input', makeLoadImage(tocImg, tocIcon))
+			backPage.addEventListener('input', makeLoadImage(backPageImg, backPageIcon))
+           
+		    function makeLoadImage(previewEl, button) {
+				return function(evt) {
+					let file = evt.target.files[0]
+					let reader = new FileReader()
+
+					reader.addEventListener('load', function(evt) {
+						previewEl.src = evt.target.result
+						previewEl.classList.remove('hidden')
+						button.classList.add('hidden')
+					})
+					reader.readAsDataURL(file)
+				}
+		    }
+
+		</script>
+	</body>
+</html>

@@ -155,6 +155,20 @@ nav ul li a {
     height: 100vh;
 }
 
+.two-rows {
+    display: grid;
+    grid-template-columns: 1.5fr 7fr 2fr;
+    grid-template-rows: 1fr 9fr;
+    height: 100vh;
+}
+
+iframe {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3; 
+}
+
 aside {
     grid-area: right;
 }
